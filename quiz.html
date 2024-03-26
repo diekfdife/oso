@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>문제 풀기</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>문제 풀기</h1>
+        <p id="question"></p>
+        <input type="text" id="userAnswer" placeholder="정답을 입력하세요">
+        <button onclick="checkAnswer()">확인</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        var question = localStorage.getItem('question');
+        var answer = localStorage.getItem('answer');
+        var info = localStorage.getItem('info');
+        document.getElementById('question').innerText = question;
+
+        function checkAnswer() {
+            var userAnswer = document.getElementById('userAnswer').value;
+            if (userAnswer === answer) {
+                document.getElementById('result').innerText = '정답입니다! ' + info;
+            } else {
+                document.getElementById('result').innerText = '틀렸습니다. 다시 시도해주세요.';
+            }
+        }
+    </script>
+</body>
+</html>
